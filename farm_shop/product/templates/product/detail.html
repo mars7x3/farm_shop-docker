@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+
+{% block nav %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}" style="color:#000000 !important">Главная
+                  <span style="color:#000000" class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a style="color:#000000" class="nav-link" href="{% url 'products' %}" style="color:#000000 !important" >Продукция</a>
+              </li>
+
+              <li class="nav-item">
+                <a style="color:#000000" class="nav-link" href="{% url 'contacts' %}" style="color:#000000 !important">Контакты</a>
+              </li>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class = "card-wrapper">
+      <div class = "card">
+        <!-- card left -->
+        <div  style="margin-top: 50px;" class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src = "{{product.image.url}}" alt = "shoe image">
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class = "product-content"  style="margin-top: 50px;">
+          <h2 class = "product-title">{{product.name}}</h2>
+
+
+          <div class = "product-detail">
+            <h2>about this item: </h2>
+
+
+              {% if product.status == 'В наличии' %}
+              <a href = "#" class = "product-link1">{{product.status}}</a>
+<!--                 <p style = "color: green;" class="card-text">{{ product.status }}</p>-->
+
+              {% elif product.status == 'Нет в наличии' %}
+              <a href = "#" class = "product-link2">{{product.status}}</a>
+<!--                 <p style = "color: red;" class="card-text">{{ product.status }}</p>-->
+              {% else %}
+              <a class = "product-link3">{{product.status}}</a>
+<!--                <p style = "color: blue;" class="card-text">{{ product.status }}</p>-->
+              {% endif %}
+
+
+            <p>{{product.description}}</p>
+
+          </div>
+
+          <div class = "purchase-info">
+
+            <a href="{% url 'contacts' %}"><button type = "button" class = "btn">
+              Заказать <i class = "fas fa-shopping-cart"></i>
+            </button></a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+   {% endblock %}

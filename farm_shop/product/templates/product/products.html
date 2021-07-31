@@ -1,0 +1,110 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block nav %}
+              <li class="nav-item">
+                <a style="color: black" class="nav-link" href="{% url 'home' %}">Главная
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a style="color: black" class="nav-link" href="{% url 'products' %}">Продукция</a>
+              </li>
+
+              <li class="nav-item">
+                <a style="color: black" class="nav-link" href="{% url 'contacts' %}">Контакты</a>
+              </li>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <!-- <h4>наша</h4>
+              <h2>Продукция</h2> -->
+                            <h1 style="color:#0c6e66 ;font-size:100px;font-weight:bold;">Меди Групп</h1>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="products" >
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="filters">
+
+              <ul>
+              <li class="active" data-filter="*">Все</li>
+              {% for pro in categories  %}
+                  <li data-filter=".{{ pro.slug }}">{{ pro.title  }}</li>
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+                  {% for pro in products %}
+                    <div class="col-lg-4 col-md-4 all {{ pro.category.slug }}">
+                      <div class="product-item" style="min-height: 630px;">
+                        <a href="{%url 'detail' pro.id%}"><img src="{{ pro.image.url }}" alt=""></a>
+                        <div class="down-content">
+                          <a href="{%url 'detail' pro.id%}"><h4>{{ pro.name }}</h4></a>
+                          {% if pro.status == 'В наличии' %}
+                          <a href = "#" class = "product-link1">{{pro.status}}</a>
+            <!--                 <p style = "color: green;" class="card-text">{{ product.status }}</p>-->
+
+                          {% elif pro.status == 'Нет в наличии' %}
+                          <a href = "#" class = "product-link2">{{pro.status}}</a>
+            <!--                 <p style = "color: red;" class="card-text">{{ product.status }}</p>-->
+                          {% else %}
+                          <a class = "product-link3">{{pro.status}}</a>
+            <!--                <p style = "color: blue;" class="card-text">{{ product.status }}</p>-->
+                          {% endif %}
+                          <br>
+                          <p>{{ pro.description|truncatewords:10 }}</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <ul class="pages">
+              {% for page in  paginator.page_range %}
+                {% if page == page_obj.number %}
+                <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                {% else %}
+                <li><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-double-right"></i></a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

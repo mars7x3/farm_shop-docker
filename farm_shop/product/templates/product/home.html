@@ -1,0 +1,154 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+      <li class="nav-item active">
+        <a style="color: black;" class="nav-link" href="{% url 'home' %}">Главная
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a style="color: black" class="nav-link" href="{% url 'products' %}">Продукция</a>
+      </li>
+
+      <li class="nav-item">
+        <a style="color: black" class="nav-link" href="{% url 'contacts' %}">Контакты</a>
+      </li>
+{% endblock %}
+{% block content %}
+   <!-- Page Content -->
+    <div class="page-heading about-heading header-text " >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              
+
+<!--             .<img src="../../../static/assets/images/main-logo.png" alt="">-->
+              <h1 style="color:#0c6e66 ;font-size:100px;font-weight:bold;">Меди Групп</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{% static 'assets/images/feature-image.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              {% for comp in company %}
+              <h4>{{comp.name}}</h4>
+              <p>{{ comp.company_text }}<br><br></p>
+              {% endfor %}
+              <ul class="social-icons">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="service-item">
+              <div class="icon">
+                <img src="media/сертификат.webp">
+<!--                <i class="fa fa-youtube"></i>-->
+              </div>
+              <div class="down-content">
+                <h4>Сертификат 1</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
+                <a href="https://www.essens.company/sertifikaty" target="_blank" class="filled-button">Подробнее</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item">
+              <div class="icon">
+                <img src="media/сертификат.webp">
+<!--                <i class="fa fa-gear"></i>-->
+              </div>
+              <div class="down-content">
+                <h4>Сертификат 2</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
+                <a href="https://www.essens.company/sertifikaty" target="_blank" class="filled-button">Подробнее</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item">
+              <div class="icon">
+                <img src="media/сертификат.webp">
+
+<!--                <i class="fa fa-flag"></i>-->
+              </div>
+              <div class="down-content">
+                <h4>Сертификат 3</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
+                <a href="https://www.essens.company/sertifikaty" target="_blank" class="filled-button">Подробнее</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!--    <div class="happy-clients">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-12">-->
+<!--            <div class="section-heading">-->
+<!--              <h2>Отзывы</h2>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-12">-->
+<!--            <div class="owl-clients owl-carousel">-->
+<!--              <div class="client-item">-->
+<!--                <img src="{% static 'assets/images/client-01.png' %}" alt="1">-->
+<!--              </div>-->
+
+<!--              <div class="client-item">-->
+<!--                <img src="{% static 'assets/images/client-01.png' %}" alt="2">-->
+<!--              </div>-->
+
+<!--              <div class="client-item">-->
+<!--                <img src="{% static 'assets/images/client-01.png' %}" alt="3">-->
+<!--              </div>-->
+
+<!--              <div class="client-item">-->
+<!--                <img src="{% static 'assets/images/client-01.png' %}" alt="4">-->
+<!--              </div>-->
+
+<!--              <div class="client-item">-->
+<!--                <img src="{% static 'assets/images/client-01.png' %}" alt="5">-->
+<!--              </div>-->
+
+<!--              <div class="client-item">-->
+<!--                <img src="{% static 'assets/images/client-01.png' %}" alt="6">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+
+{% endblock %}
